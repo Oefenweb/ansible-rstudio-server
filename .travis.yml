@@ -1,0 +1,66 @@
+---
+language: python
+python: "2.7"
+
+env:
+  - ANSIBLE_VERSION=latest
+  - ANSIBLE_VERSION=1.9.2
+  - ANSIBLE_VERSION=1.9.1
+  - ANSIBLE_VERSION=1.9.0.1
+  - ANSIBLE_VERSION=1.8.4
+  - ANSIBLE_VERSION=1.8.3
+  - ANSIBLE_VERSION=1.8.2
+  - ANSIBLE_VERSION=1.8.1
+  - ANSIBLE_VERSION=1.8
+  - ANSIBLE_VERSION=1.7.2
+  - ANSIBLE_VERSION=1.7.1
+  - ANSIBLE_VERSION=1.7
+  - ANSIBLE_VERSION=1.6.9
+  - ANSIBLE_VERSION=1.6.8
+  - ANSIBLE_VERSION=1.6.7
+  - ANSIBLE_VERSION=1.6.6
+  - ANSIBLE_VERSION=1.6.5
+  - ANSIBLE_VERSION=1.6.4
+  - ANSIBLE_VERSION=1.6.3
+  - ANSIBLE_VERSION=1.6.2
+  - ANSIBLE_VERSION=1.6.10
+  - ANSIBLE_VERSION=1.6.1
+  - ANSIBLE_VERSION=1.6
+
+branches:
+  only:
+    - master
+
+before_install:
+  - sudo apt-get update -qq
+
+install:
+  # Install Ansible.
+  - if [ "$ANSIBLE_VERSION" = "latest" ]; then pip install ansible; else pip install ansible==$ANSIBLE_VERSION; fi
+
+script:
+  # Check the role/playbook's syntax.
+  - ansible-playbook -i tests/inventory tests/test.yml --syntax-check
+
+  # Run the role/playbook with ansible-playbook.
+  - ansible-playbook -i tests/inventory tests/test.yml --connection=local --sudo -vvvv
+
+  # Run the role/playbook again, checking to make sure it's idempotent.
+  - >
+    ansible-playbook -i tests/inventory tests/test.yml --connection=local --sudo
+    | grep -q 'changed=0.*failed=0'
+    && (echo 'Idempotence test: pass' && exit 0)
+    || (echo 'Idempotence test: fail' && exit 1)
+
+  # Test rstudio-server installation
+  - >
+    wget http://localhost:8787/auth-sign-in -O /dev/null -S --quiet 2>&1
+    | grep -q '200 OK'
+    && (echo 'Availability test: pass' && exit 0)
+    || (echo 'Availability test: fail' && exit 1)
+
+notifications:
+  email: false
+  hipchat:
+    rooms:
+      secure: Qod7XK3zmcuOSWBVuyQ8Aq1AYPdBBnlAz6ExRK7nzB96PaytNSSa/j25avIHNauh3MgVAHyEX5wOglpruAxXaGDEzypJ7ia1HW4bIuRLpvynemvVH3MFjJpoDhhf5GTg8Na2NgDWKi1FtcS6L60jsXrRE3HRVw6giDT58VqgDjSjDUyQD1BRLAn3z5bUn1Z+maFjqClPAbicU8uUNkCSBwTCBes/n0wdi4WMCmttqozMAgQPpWQGQK02ADFt7bwurFdmoZclcBMu488qfRcZztYTtvQ54vLSLW/UjQTtERzJuQuZ2NWItpPFxUZ5j/q0aRrs08wTRQ6RaDxJYEFWm30Z7q3Lx3WTuNy4UiLm9oD+EtOwGLDqtsvYkI+6+FTGCy4/RAfID8WGeiomhoCVNsk6UMjRWQ2Yx5xp/3KKnv6mU4fzim5VTxR6k2+RG6xrLPK7K9JJVcIlrJio4q2GHG2zHHSBFfECbp/Ku3ZdGHNwkef7d09uX2PVQ8iwGcPMxqJdmaU+OSTdcOa1QVqnDex50cUew3lnqxR29GX4G050gE6VBNWsgLifTtMIjXDbRZfiMfpcArNUpI/GFcjAI6jp9zDa8YW8VK9Sh/Zuox2L5yGUFjnR/1BdPzumvwgx/x2Rh70MIsl60TTKdBIEctQOru8Bzh11R2nslI2+up0=

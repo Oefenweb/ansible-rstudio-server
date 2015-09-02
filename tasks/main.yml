@@ -1,0 +1,23 @@
+# tasks file for rstudio-server
+---
+- include: install.yml
+  tags:
+   - configuration
+   - rstudio-server
+   - rstudio-server-install
+
+- include: configure.yml
+  tags:
+   - configuration
+   - rstudio-server
+   - rstudio-server-configure
+
+- name: start and enable service
+  service:
+    name: rstudio-server
+    state: started
+    enabled: yes
+  tags:
+    - configuration
+    - rstudio-server
+    - rstudio-server-start-enable-service

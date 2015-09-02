@@ -1,0 +1,9 @@
+# test file for rstudio-server
+---
+- hosts: localhost
+  remote_user: root
+  roles:
+    - ../../
+  vars:
+    rstudio_server_install:
+      - r-base
