@@ -1,0 +1,23 @@
+# tasks file for rstudio-server
+---
+- name: configure | update (server) configuration file
+  template:
+    src: etc/rstudio/rserver.conf.j2
+    dest: /etc/rstudio/rserver.conf
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart rstudio-server
+  tags:
+    - rstudio-server-configure-server
+
+- name: configure | update (session) configuration file
+  template:
+    src: etc/rstudio/rsession.conf.j2
+    dest: /etc/rstudio/rsession.conf
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart rstudio-server
+  tags:
+    - rstudio-server-configure-session

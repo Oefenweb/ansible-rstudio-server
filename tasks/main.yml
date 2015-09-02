@@ -1,72 +1,23 @@
 # tasks file for rstudio-server
 ---
-- name: install | dependencies
-  apt:
-    name: "{{ item }}"
-    state: latest
-    update_cache: true
-    cache_valid_time: 3600
-  with_items: rstudio_server_dependencies
-  tags: [configuration, rstudio-server, rstudio-server-install-dependencies]
+- include: install.yml
+  tags:
+   - configuration
+   - rstudio-server
+   - rstudio-server-install
 
-- name: install | additional
-  apt:
-    name: "{{ item }}"
-    state: latest
-  with_items: rstudio_server_install
-  tags: [configuration, rstudio-server, rstudio-server-install-additional]
-
-- name: create (download) directory
-  file:
-    path: "{{ rstudio_server_downloads_path }}"
-    state: directory
-    owner: root
-    group: root
-    mode: 0755
-  tags: [configuration, rstudio-server, rstudio-server-download]
-
-- name: download
-  command: "curl -sS https://download2.rstudio.org/rstudio-server-{{ rstudio_server_version }}-{{ rstudio_server_machine_map[ansible_machine] }}.deb -o {{ rstudio_server_downloads_path }}/rstudio-server_{{ rstudio_server_version }}_{{ rstudio_server_machine_map[ansible_machine] }}.deb"
-  args:
-    creates: "{{ rstudio_server_downloads_path }}/rstudio-server_{{ rstudio_server_version }}_{{ rstudio_server_machine_map[ansible_machine] }}.deb"
-  tags: [configuration, rstudio-server, rstudio-server-download]
-
-- name: check permissions
-  file:
-    path: "{{ rstudio_server_downloads_path }}/rstudio-server_{{ rstudio_server_version }}_{{ rstudio_server_machine_map[ansible_machine] }}.deb"
-    owner: root
-    group: root
-    mode: 0644
-  tags: [configuration, rstudio-server, rstudio-server-download]
-
-- name: install deb file
-  apt:
-    deb: "{{ rstudio_server_downloads_path }}/rstudio-server_{{ rstudio_server_version }}_{{ rstudio_server_machine_map[ansible_machine] }}.deb"
-  tags: [configuration, rstudio-server, rstudio-server-install-deb]
-
-- name: update configuration file
-  template:
-    src: etc/rstudio/rserver.conf.j2
-    dest: /etc/rstudio/rserver.conf
-    owner: root
-    group: root
-    mode: 0644
-  notify: restart rstudio-server
-  tags: [configuration, postfix, postfix-configuration]
-
-- name: update configuration file
-  template:
-    src: etc/rstudio/rserver.conf.j2
-    dest: /etc/rstudio/rserver.conf
-    owner: root
-    group: root
-    mode: 0644
-  notify: restart rstudio-server
-  tags: [configuration, postfix, postfix-configuration]
+- include: configure.yml
+  tags:
+   - configuration
+   - rstudio-server
+   - rstudio-server-configure
 
 - name: start and enable service
   service:
     name: rstudio-server
     state: started
     enabled: yes
-  tags: [configuration, rstudio-server, rstudio-server-start-enable-service]
+  tags:
+    - configuration
+    - rstudio-server
+    - rstudio-server-start-enable-service
