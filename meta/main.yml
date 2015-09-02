@@ -1,0 +1,20 @@
+# meta file for rstudio-server
+---
+galaxy_info:
+  author: Mischa ter Smitten
+  company: Oefenweb.nl B.V.
+  description: Set up up (the latest version of) RStudio server in Debian-like systems
+  license: MIT
+  min_ansible_version: 1.4
+  platforms:
+    - name: Ubuntu
+      versions:
+        - precise
+        - trusty
+    - name: Debian
+      versions:
+        - jessie
+  categories:
+    - development
+    - system
+dependencies: []
