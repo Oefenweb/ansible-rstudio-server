@@ -16,7 +16,7 @@
   service:
     name: rstudio-server
     state: started
-    enabled: yes
+    enabled: true
   tags:
     - configuration
     - rstudio-server
