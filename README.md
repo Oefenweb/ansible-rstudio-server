@@ -1,6 +1,6 @@
 ## rstudio-server
 
-[![Build Status](https://travis-ci.org/Oefenweb/ansible-rstudio-server.svg?branch=master)](https://travis-ci.org/Oefenweb/ansible-rstudio-server) [![Ansible Galaxy](http://img.shields.io/badge/ansible--galaxy-rstudio--server-blue.svg)](https://galaxy.ansible.com/list#/roles/4953)
+[![Build Status](https://travis-ci.org/Oefenweb/ansible-rstudio-server.svg?branch=master)](https://travis-ci.org/Oefenweb/ansible-rstudio-server) [![Ansible Galaxy](http://img.shields.io/badge/ansible--galaxy-rstudio--server-blue.svg)](https://galaxy.ansible.com/tersmitten/rstudio-server/)
 
 Set up (the latest version of) [RStudio Server](https://www.rstudio.com/products/rstudio/download-server/) in Debian-like systems.
 
