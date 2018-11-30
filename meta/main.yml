@@ -1,6 +1,7 @@
 # meta file for rstudio-server
 ---
 galaxy_info:
+  role_name: rstudio-server
   author: Mischa ter Smitten
   company: Oefenweb.nl B.V.
   description: Set up (the latest version of) RStudio server in Debian-like systems
@@ -12,6 +13,7 @@ galaxy_info:
         - precise
         - trusty
         - xenial
+        - bionic
     - name: Debian
       versions:
         - jessie
