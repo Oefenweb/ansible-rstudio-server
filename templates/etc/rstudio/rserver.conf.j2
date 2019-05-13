@@ -7,3 +7,6 @@ www-address={{ rstudio_server_www_address }}
 {% if rstudio_server_auth_required_user_group is defined %}
 auth-required-user-group={{ rstudio_server_auth_required_user_group }}
 {% endif %}
+{% if rstudio_server_which_r is defined %}
+rsession-which-r={{ rstudio_server_which_r }}
+{% endif %}
