@@ -1,6 +1,7 @@
 ## rstudio-server
 
-[![Build Status](https://travis-ci.org/Oefenweb/ansible-rstudio-server.svg?branch=master)](https://travis-ci.org/Oefenweb/ansible-rstudio-server) [![Ansible Galaxy](http://img.shields.io/badge/ansible--galaxy-rstudio--server-blue.svg)](https://galaxy.ansible.com/Oefenweb/rstudio-server/)
+[![Build Status](https://travis-ci.org/Oefenweb/ansible-rstudio-server.svg?branch=master)](https://travis-ci.org/Oefenweb/ansible-rstudio-server)
+[![Ansible Galaxy](http://img.shields.io/badge/ansible--galaxy-rstudio--server-blue.svg)](https://galaxy.ansible.com/Oefenweb/rstudio-server/)
 
 Set up (the latest version of) [RStudio Server](https://www.rstudio.com/products/rstudio/download-server/) in Debian-like systems.
 
@@ -17,7 +18,7 @@ Set up (the latest version of) [RStudio Server](https://www.rstudio.com/products
 * `rstudio_server_www_port` [default: `8787`]: The port you want RStudio to listen on
 * `rstudio_server_www_address` [default: `0.0.0.0`]: The address you want RStudio to listen on
 * `rstudio_server_auth_required_user_group` [optional]: Limits the users who can login to RStudio to the members of a this group (e.g. `rstudio_users`)
-* `rsession-which-r` [optional]: Override which version of R is used.
+* `rstudio_server_which_r` [optional]: Override which version of R is used
 
 ## Dependencies
 
