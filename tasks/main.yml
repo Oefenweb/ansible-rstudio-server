@@ -9,7 +9,7 @@
   tags:
    - configuration
    - rstudio-server
-   - - rstudio-server-include-variables
+   - rstudio-server-include-variables
 
 - include: install.yml
   tags:
