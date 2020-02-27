@@ -1,5 +1,16 @@
 # tasks file for rstudio-server
 ---
+- name: include variables
+  include_vars: "{{ item }}"
+  with_first_found:
+    - "_{{ ansible_distribution_release }}.yml"
+    - "_{{ ansible_distribution | lower }}.yml"
+    - _default.yml
+  tags:
+   - configuration
+   - rstudio-server
+   - rstudio-server-include-variables
+
 - include: install.yml
   tags:
    - configuration
