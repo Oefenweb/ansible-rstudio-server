@@ -1,0 +1,4 @@
+# vars file for rstudio-server
+---
+rstudio_server_install:
+  - r-base

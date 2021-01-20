@@ -1,6 +1,6 @@
 ## rstudio-server
 
-[![Build Status](https://travis-ci.org/Oefenweb/ansible-rstudio-server.svg?branch=master)](https://travis-ci.org/Oefenweb/ansible-rstudio-server)
+[![CI](https://github.com/Oefenweb/ansible-rstudio-server/workflows/CI/badge.svg)](https://github.com/Oefenweb/ansible-rstudio-server/actions?query=workflow%3ACI)
 [![Ansible Galaxy](http://img.shields.io/badge/ansible--galaxy-rstudio--server-blue.svg)](https://galaxy.ansible.com/Oefenweb/rstudio-server/)
 
 Set up (the latest version of) [RStudio Server](https://www.rstudio.com/products/rstudio/download-server/) in Debian-like systems.
@@ -12,7 +12,7 @@ Set up (the latest version of) [RStudio Server](https://www.rstudio.com/products
 
 #### Variables
 
-* `rstudio_server_version` [default: `1.2.5033`]: Version to install
+* `rstudio_server_version` [default: `1.4.1103`]: Version to install
 * `rstudio_server_install` [default: `[]`]: Additional packages to install (e.g. `r-base`)
 
 * `rstudio_server_www_port` [default: `8787`]: The port you want RStudio to listen on
@@ -27,6 +27,7 @@ None
 ## Recommended
 
 * `ansible-r` ([see](https://github.com/Oefenweb/ansible-r))
+* `ansible-rstudio` ([see](https://github.com/Oefenweb/ansible-rstudio))
 
 #### Example
 

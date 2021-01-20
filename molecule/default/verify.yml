@@ -1,0 +1,14 @@
+---
+- name: Verify
+  hosts: all
+  become: true
+  tasks:
+    - name: test rstudio-server installation
+      shell: >
+        wget http://localhost:8787/auth-sign-in -O /dev/null -S --quiet 2>&1
+        | grep -q '200 OK'
+        && (echo 'Availability test: pass' && exit 0)
+        || (echo 'Availability test: fail' && exit 1)
+      changed_when: false
+      tags:
+        - skip_ansible_lint

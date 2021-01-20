@@ -7,21 +7,21 @@
     - "_{{ ansible_distribution | lower }}.yml"
     - _default.yml
   tags:
-   - configuration
-   - rstudio-server
-   - rstudio-server-include-variables
+    - configuration
+    - rstudio-server
+    - rstudio-server-include-variables
 
 - include: install.yml
   tags:
-   - configuration
-   - rstudio-server
-   - rstudio-server-install
+    - configuration
+    - rstudio-server
+    - rstudio-server-install
 
 - include: configure.yml
   tags:
-   - configuration
-   - rstudio-server
-   - rstudio-server-configure
+    - configuration
+    - rstudio-server
+    - rstudio-server-configure
 
 - name: start and enable service
   service:
