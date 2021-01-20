@@ -12,7 +12,7 @@ Set up (the latest version of) [RStudio Server](https://www.rstudio.com/products
 
 #### Variables
 
-* `rstudio_server_version` [default: `1.4.1103`]: Version to install
+* `rstudio_server_version` [default: `1.4.1103`, `1.2.5042` for `Debian 8`]: Version to install
 * `rstudio_server_install` [default: `[]`]: Additional packages to install (e.g. `r-base`)
 
 * `rstudio_server_www_port` [default: `8787`]: The port you want RStudio to listen on

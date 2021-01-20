@@ -1,6 +1,6 @@
 # defaults file for rstudio-server
 ---
-rstudio_server_version: 1.4.1103
+rstudio_server_version: "{{ '1.2.5042' if ansible_distribution == 'Debian' and ansible_distribution_version is version('9', '<') else '1.4.1103' }}"
 rstudio_server_install: []
 
 rstudio_server_www_port: 8787
