@@ -1,3 +1,4 @@
 # vars file for rstudio-server
 ---
+# trusty -> xenial for later versions
 rstudio_server_download_url: "https://download2.rstudio.org/server/trusty/{{ rstudio_server_machine_map[ansible_machine] }}/rstudio-server-{{ rstudio_server_version }}-{{ rstudio_server_machine_map[ansible_machine] }}.deb"
