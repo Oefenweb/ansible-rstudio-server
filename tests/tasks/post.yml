@@ -12,6 +12,8 @@
     | grep -q '200 OK'
     && (echo 'Availability test: pass' && exit 0)
     || (echo 'Availability test: fail' && exit 1)
+  args:
+    warn: false
   changed_when: false
   tags:
     - skip_ansible_lint
