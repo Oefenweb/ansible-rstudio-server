@@ -8,3 +8,6 @@
       include_vars: "{{ playbook_dir }}/vars/main.yml"
   roles:
     - ../../
+  post_tasks:
+    - name: include tasks
+      include: "{{ playbook_dir }}/tasks/post.yml"
