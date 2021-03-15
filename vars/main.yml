@@ -1,4 +1,4 @@
-# vars file for rstudio-server
+# vars file
 ---
 rstudio_server_dependencies:
   - curl

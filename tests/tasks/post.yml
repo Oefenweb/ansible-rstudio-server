@@ -1,4 +1,4 @@
-# post test file for rstudio-server
+# post test file
 ---
 - name: install test dependencies
   apt:
