@@ -12,13 +12,14 @@ Set up (the latest version of) [RStudio Server](https://www.rstudio.com/products
 
 #### Variables
 
-* `rstudio_server_version` [default: `1.4.1106`, `1.2.5042` for `Debian 8`]: Version to install
+* `rstudio_server_version` [default: `1.4.1717`, `1.2.5042` for `Debian 8`]: Version to install
 * `rstudio_server_install` [default: `[]`]: Additional packages to install (e.g. `r-base`)
 
 * `rstudio_server_www_port` [default: `8787`]: The port you want RStudio to listen on
 * `rstudio_server_www_address` [default: `0.0.0.0`]: The address you want RStudio to listen on
 * `rstudio_server_auth_required_user_group` [optional]: Limits the users who can login to RStudio to the members of a this group (e.g. `rstudio_users`)
 * `rstudio_server_which_r` [optional]: Override which version of R is used
+* `rstudio_server_session_timeout_minutes` [optional]: Session timeout (e.g. `0`, no timeout)
 
 ## Dependencies
 
