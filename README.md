@@ -19,6 +19,7 @@ Set up (the latest version of) [RStudio Server](https://www.rstudio.com/products
 * `rstudio_server_www_address` [default: `0.0.0.0`]: The address you want RStudio to listen on
 * `rstudio_server_auth_required_user_group` [optional]: Limits the users who can login to RStudio to the members of a this group (e.g. `rstudio_users`)
 * `rstudio_server_which_r` [optional]: Override which version of R is used
+* `rstudio_server_session_timeout_minutes` [optional]: Session timeout (e.g. `0`, no timeout)
 
 ## Dependencies
 

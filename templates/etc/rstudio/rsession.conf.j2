@@ -1,3 +1,6 @@
-# {{ ansible_managed }}
+{{ ansible_managed | comment }}
 
 # R Session Configuration File
+{% if rstudio_server_session_timeout_minutes is defined %}
+session-timeout-minutes={{ rstudio_server_session_timeout_minutes }}
+{% endif %}
