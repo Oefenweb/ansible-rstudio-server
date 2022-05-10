@@ -1,3 +1,0 @@
-# vars file
----
-rstudio_server_download_url: "https://download2.rstudio.org/server/{{ ansible_distribution_release }}/{{ rstudio_server_machine_map[ansible_machine] }}/rstudio-server-{{ rstudio_server_version }}-{{ rstudio_server_machine_map[ansible_machine] }}.deb"
