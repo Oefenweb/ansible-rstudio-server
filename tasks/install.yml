@@ -27,14 +27,13 @@
     - rstudio-server-install-download
     - rstudio-server-install-download-directory
 
-- name: install | download deb
+- name: install | download deb  # noqa command-instead-of-module
   command: >
     curl --silent --show-error --fail --location
     {{ rstudio_server_download_url }}
     -o {{ rstudio_server_downloads_path }}/rstudio-server-{{ rstudio_server_version }}-{{ rstudio_server_machine_map[ansible_machine] }}.deb
   args:
     creates: "{{ rstudio_server_downloads_path }}/rstudio-server-{{ rstudio_server_version }}-{{ rstudio_server_machine_map[ansible_machine] }}.deb"
-    warn: false
   tags:
     - rstudio-server-install-download
     - rstudio-server-install-download-deb
