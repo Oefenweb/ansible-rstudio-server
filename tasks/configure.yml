@@ -1,7 +1,7 @@
 # tasks file
 ---
 - name: configure | update (server) configuration file
-  template:
+  ansible.builtin.template:
     src: etc/rstudio/rserver.conf.j2
     dest: /etc/rstudio/rserver.conf
     owner: root
@@ -12,7 +12,7 @@
     - rstudio-server-configure-server
 
 - name: configure | update (session) configuration file
-  template:
+  ansible.builtin.template:
     src: etc/rstudio/rsession.conf.j2
     dest: /etc/rstudio/rsession.conf
     owner: root

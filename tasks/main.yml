@@ -1,7 +1,7 @@
 # tasks file
 ---
 - name: include variables
-  include_vars: "{{ item }}"
+  ansible.builtin.include_vars: "{{ item }}"
   with_first_found:
     - "_{{ ansible_distribution_release }}.yml"
     - "_{{ ansible_distribution | lower }}.yml"
@@ -11,20 +11,22 @@
     - rstudio-server
     - rstudio-server-include-variables
 
-- include: install.yml
+- name: install
+  ansible.builtin.import_tasks: install.yml
   tags:
     - configuration
     - rstudio-server
     - rstudio-server-install
 
-- include: configure.yml
+- name: configure
+  ansible.builtin.import_tasks: configure.yml
   tags:
     - configuration
     - rstudio-server
     - rstudio-server-configure
 
 - name: start and enable service
-  service:
+  ansible.builtin.service:
     name: rstudio-server
     state: "{{ service_default_state | default('started') }}"
     enabled: "{{ service_default_enabled | default(true) | bool }}"
