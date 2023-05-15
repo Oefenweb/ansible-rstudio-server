@@ -1,7 +1,7 @@
 # tasks file
 ---
 - name: install | dependencies
-  apt:
+  ansible.builtin.apt:
     name: "{{ rstudio_server_dependencies }}"
     state: "{{ apt_install_state | default('latest') }}"
     update_cache: true
@@ -10,14 +10,14 @@
     - rstudio-server-install-dependencies
 
 - name: install | additional
-  apt:
+  ansible.builtin.apt:
     name: "{{ rstudio_server_install }}"
     state: "{{ apt_install_state | default('latest') }}"
   tags:
     - rstudio-server-install-additional
 
 - name: install | create (download) directory
-  file:
+  ansible.builtin.file:
     path: "{{ rstudio_server_downloads_path }}"
     state: directory
     owner: root
@@ -28,7 +28,7 @@
     - rstudio-server-install-download-directory
 
 - name: install | download deb  # noqa command-instead-of-module
-  command: >
+  ansible.builtin.command: >
     curl --silent --show-error --fail --location
     {{ rstudio_server_download_url }}
     -o {{ rstudio_server_downloads_path }}/rstudio-server-{{ rstudio_server_version }}-{{ rstudio_server_machine_map[ansible_machine] }}.deb
@@ -39,7 +39,7 @@
     - rstudio-server-install-download-deb
 
 - name: install | install deb
-  apt:
+  ansible.builtin.apt:
     deb: "{{ rstudio_server_downloads_path }}/rstudio-server-{{ rstudio_server_version }}-{{ rstudio_server_machine_map[ansible_machine] }}.deb"
   tags:
     - rstudio-server-install-install
