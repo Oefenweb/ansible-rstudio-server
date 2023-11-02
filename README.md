@@ -36,7 +36,7 @@ None
 ---
 - hosts: all
   roles:
-    - rstudio-server
+    - oefenweb.rstudio-server
 ```
 
 #### License
