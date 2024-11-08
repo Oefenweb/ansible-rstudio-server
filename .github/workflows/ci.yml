@@ -44,11 +44,8 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - distro: debian10
           - distro: debian11
           - distro: debian12
-          - distro: ubuntu1804
-            ansible-version: '>=9, <10'
           - distro: ubuntu2004
           - distro: ubuntu2204
           - distro: ubuntu2404
