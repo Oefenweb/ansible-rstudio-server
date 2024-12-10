@@ -6,7 +6,7 @@
     dest: /etc/rstudio/rserver.conf
     owner: root
     group: root
-    mode: 0644
+    mode: '0644'
   notify: restart rstudio-server
   tags:
     - rstudio-server-configure-server
@@ -17,7 +17,7 @@
     dest: /etc/rstudio/rsession.conf
     owner: root
     group: root
-    mode: 0644
+    mode: '0644'
   notify: restart rstudio-server
   tags:
     - rstudio-server-configure-session
