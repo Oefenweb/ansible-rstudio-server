@@ -1,6 +1,6 @@
 # defaults file
 ---
-rstudio_server_version: '2024.09.1-394'
+rstudio_server_version: '2024.12.1-563'
 rstudio_server_install: []
 
 rstudio_server_www_port: 8787
